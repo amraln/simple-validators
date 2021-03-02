@@ -1,0 +1,88 @@
+version: 2.1
+
+executors:
+  node-step:
+    docker:
+      - image: circleci/node:14.4.0
+
+jobs:
+  deps-install:
+    executor: node-step
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-install-node14-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - yarn-install-node14-{{ checksum "package.json" }}
+            - yarn-install-node14
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+      - run:
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-install-node14-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - node_modules
+
+  validation:
+    executor: node-step
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Linting
+          command: yarn lint --format junit -o ./junit/js-lint-results.xml
+      - run:
+          name: Testing
+          command: yarn test --coverage --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./junit/
+      - run:
+          name: Codecov upload
+          command: yarn codecov
+      - store_test_results:
+          path: ~/project/junit/
+      - store_artifacts:
+          path: ~/project/coverage
+          destination: coverage
+      - run:
+          name: Building
+          command: yarn tsc
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - build
+
+  publish:
+    executor: node-step
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Releasing
+          command: yarn release
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - deps-install
+      - validation:
+          requires:
+            - deps-install
+      - publish:
+          context: semver
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - validation
