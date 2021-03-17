@@ -17,7 +17,7 @@
         "lint:fix": "yarn lint --fix",
         "test": "jest",
         "build": "tsc",
-        "release": "semantic-release"
+        "semantic-release": "semantic-release"
     },
     "files": [
         "build",
