@@ -33,7 +33,7 @@
     "devDependencies": {
         "@amille/eslint-ts-config": "^1.0.2",
         "@babel/core": "^7.13.13",
-        "@babel/preset-env": "^7.13.10",
+        "@babel/preset-env": "^7.13.12",
         "@babel/preset-typescript": "^7.12.7",
         "@types/jest": "^26.0.22",
         "@types/lodash": "^4.14.165",
