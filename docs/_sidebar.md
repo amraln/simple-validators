@@ -1,0 +1,2 @@
+-   [Get Started](/)
+-   [Validators](validators.md)

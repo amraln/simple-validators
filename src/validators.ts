@@ -1,4 +1,5 @@
 import { PropertyPath } from 'lodash';
+import { CustomValidatorHandler } from './CustomValidator';
 import Validator from './Validator';
 import * as methods from './methods';
 
@@ -22,3 +23,6 @@ export const nest = <TOuterContext = any>(path: PropertyPath, validator: Validat
 
 export const forEach = <TOuterContext = any>(field: PropertyPath, validator: Validator<TOuterContext>) =>
     new methods.ForEach<TOuterContext>(field, validator);
+
+export const custom = <TOuterContext = any>(field: PropertyPath, validator: CustomValidatorHandler<TOuterContext>) =>
+    new methods.CustomValidator<TOuterContext>(field, validator);
