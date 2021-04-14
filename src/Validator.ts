@@ -4,6 +4,7 @@ import * as defaultMessages from './defaultMessages';
 
 export type ValidateOptions = Partial<Omit<Context, 'outerContext' | 'getAbsolutePath' | 'applyPrefix'>> & {
     initialErrors?: object;
+    defaultMessages?: typeof defaultMessages;
 };
 
 class Validator<TOuterContext = any> {
