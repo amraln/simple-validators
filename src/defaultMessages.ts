@@ -1,1 +1,5 @@
-export const requiredValue = 'Required';
+const defaultMessages = {
+    requiredValue: 'Required',
+};
+
+export default defaultMessages;

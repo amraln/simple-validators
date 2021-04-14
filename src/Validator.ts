@@ -1,10 +1,9 @@
 import { toPath } from 'lodash/fp';
 import Context from './Context';
-import * as defaultMessages from './defaultMessages';
+import defaultMessages from './defaultMessages';
 
 export type ValidateOptions = Partial<Omit<Context, 'outerContext' | 'getAbsolutePath' | 'applyPrefix'>> & {
     initialErrors?: object;
-    defaultMessages?: typeof defaultMessages;
 };
 
 class Validator<TOuterContext = any> {
