@@ -6,3 +6,4 @@ export { default as RequiredNumber } from './RequiredNumber';
 export { default as RequiredString } from './RequiredString';
 export { default as RequiredValue } from './RequiredValue';
 export { default as CustomValidator } from './CustomValidator';
+export { default as OnlyValidator } from './OnlyValidator';

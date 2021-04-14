@@ -83,5 +83,16 @@ validator.custom(
         
         return null;
     },
-)
+);
+```
+
+## only
+
+The only validator allow you to make a validator optional based on a condition.
+
+```js
+validators.only(
+    (values, errors, context) => values?.answer === 42,
+    validators.requiredString('anotherValue'),
+);
 ```

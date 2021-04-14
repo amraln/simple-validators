@@ -1,5 +1,6 @@
 import { PropertyPath } from 'lodash';
 import { CustomValidatorHandler } from './CustomValidator';
+import { OnlyChecker } from './OnlyValidator';
 import Validator from './Validator';
 import * as methods from './methods';
 
@@ -26,3 +27,6 @@ export const forEach = <TOuterContext = any>(field: PropertyPath, validator: Val
 
 export const custom = <TOuterContext = any>(field: PropertyPath, validator: CustomValidatorHandler<TOuterContext>) =>
     new methods.CustomValidator<TOuterContext>(field, validator);
+
+export const only = <TOuterContext = any>(check: OnlyChecker<TOuterContext>, validator: Validator<TOuterContext>) =>
+    new methods.OnlyValidator<TOuterContext>(check, validator);
