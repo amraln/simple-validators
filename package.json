@@ -4,7 +4,7 @@
     "description": "Simple synchronous data validation",
     "repository": "github:amille44420/simple-validators",
     "bugs": "https://github.com/amille44420/simple-validators/issues",
-    "homepage": "https://github.com/amille44420/simple-validators",
+    "homepage": "https://amille44420.github.io/simple-validators/",
     "main": "index.js",
     "author": "Adrien Mille <adrien.mille.aer@gmail.com>",
     "license": "MIT",
