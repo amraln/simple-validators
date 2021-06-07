@@ -1,9 +1,14 @@
 # @amille/simple-validators
 
-![CircleCI](https://img.shields.io/circleci/build/github/amille44420/simple-validators?style=for-the-badge)
-![Codecov](https://img.shields.io/codecov/c/github/amille44420/simple-validators?style=for-the-badge)
-![npm (scoped with tag)](https://img.shields.io/npm/v/amille/simple-validators/latest?style=for-the-badge)
-![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/amille/simple-validators?label=minified%20size&style=for-the-badge)
+[![circleci](https://img.shields.io/circleci/build/github/amille44420/simple-validators?style=for-the-badge)][circleci]
+[![codecov](https://img.shields.io/codecov/c/github/amille44420/simple-validators?style=for-the-badge)][codecov]
+[![npm](https://img.shields.io/npm/v/@amille/simple-validators/latest?style=for-the-badge)][npm]
+[![npm-bundle](https://img.shields.io/bundlephobia/min/@amille/simple-validators?label=minified%20size&style=for-the-badge)][npm-bundle]
+
+[circleci]: https://app.circleci.com/pipelines/github/amille44420/simple-validators
+[codecov]: https://app.codecov.io/gh/amille44420/simple-validators
+[npm]: https://www.npmjs.com/package/@amille/simple-validators
+[npm-bundle]: https://www.npmjs.com/package/@amille/simple-validators
 
 Simple synchronous data validation. This library requires  [Day.js] and [lodash] to work.
 
