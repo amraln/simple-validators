@@ -3,7 +3,7 @@ version: 2.1
 executors:
     node-step:
         docker:
-            - image: circleci/node:18.10.0
+            - image: cimg/node:18.11.0
 
 jobs:
     deps-install:
