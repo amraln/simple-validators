@@ -13,7 +13,7 @@
         "amille"
     ],
     "scripts": {
-        "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
+        "lint": "eslint \"{src,tests}/**/*.ts\"",
         "lint:fix": "yarn lint --fix",
         "test": "jest",
         "build": "tsc",
