@@ -39,8 +39,6 @@ class CustomValidator<TOuterContext = any> extends Validator<TOuterContext> {
         const error = this.validator(value, values, errors, context);
 
         if (!isNil(error)) {
-            const absolutePath = context.getAbsolutePath(this.field);
-
             return set(absolutePath, error, errors);
         }
 
