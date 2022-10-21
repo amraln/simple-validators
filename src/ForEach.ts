@@ -1,5 +1,5 @@
 import { PropertyPath } from 'lodash';
-import { get, keys, isEmpty } from 'lodash/fp';
+import { get, keys, isEmpty, toPath } from 'lodash/fp';
 import Context from './Context';
 import Validator from './Validator';
 
@@ -47,8 +47,7 @@ class ForEach<TOuterContext = any> extends Validator<TOuterContext> {
                 continue;
             }
 
-            const itemPath = [...collectionPath, key];
-            const itemContext = context.applyPrefix(itemPath);
+            const itemContext = context.applyPrefix([...toPath(this.field), key]);
 
             nextErrors = this.validator.execute(values, nextErrors, itemContext);
         }

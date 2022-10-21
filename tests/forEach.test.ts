@@ -41,3 +41,17 @@ test('forEach does handle lodash paths', () => {
     expect(schema.validate({ x: { y: [{}] } })).toEqual(expectedError);
     expect(schema.validate({ x: { y: [{ z: 'string' }] } })).toBeUndefined();
 });
+
+test('forEach properly resolve relative paths when nested multiple time', () => {
+    const schema = validators.compose(
+        validators.forEach('array', validators.forEach('subArray', validators.requiredString('field')))
+    );
+
+    expect(schema.validate({ array: [] })).toBeUndefined();
+    expect(schema.validate({ array: [{}] })).toBeUndefined();
+    expect(schema.validate({ array: [{ subArray: [] }] })).toBeUndefined();
+    expect(schema.validate({ array: [{ subArray: [{}] }] })).toEqual({
+        array: [{ subArray: [{ field: defaultMessages.requiredValue }] }],
+    });
+    expect(schema.validate({ array: [{ subArray: [{ field: 'string' }] }] })).toBeUndefined();
+});
