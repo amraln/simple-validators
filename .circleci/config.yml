@@ -15,13 +15,13 @@ jobs:
                       - yarn3-node18-{{ checksum "yarn.lock" }}
                       - yarn3-node18
                   paths:
-                      - ~/.yarn/cache
+                      - ~/project/.yarn/cache
             - run:
                   command: yarn install --immutable
             - save_cache:
                   key: yarn3-node18-{{ checksum "yarn.lock" }}
                   paths:
-                      - ~/.yarn/cache
+                      - ~/project/.yarn/cache
             - persist_to_workspace:
                   root: ~/project
                   paths:
