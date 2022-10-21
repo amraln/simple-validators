@@ -1,3 +1,15 @@
+# dependencies
 /node_modules
+
+# artefacts
 /coverage
 /build
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
